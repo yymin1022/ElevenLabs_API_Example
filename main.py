@@ -21,12 +21,35 @@ def init_elevenlabs_instance():
     return ElevenLabs(api_key=ELEVEN_LABS_API_KEY)
 
 
+def print_voice_info(instance: ElevenLabs):
+    """
+    Retrieve voice info from API, and print it
+    """
+    # Get voice info
+    voice_info = instance.voices.get(voice_id=VOICE_ID)
+
+    # Print info as formatted text
+    print(
+        f"""
+Current voice info
+Name: {voice_info.name}
+Category: {voice_info.category}
+Description: {voice_info.description}
+Labels: {voice_info.labels}
+Verified Languages: {voice_info.verified_languages}
+        """
+    )
+
+
 def main():
     """
     Main function
     """
     # Init elevenlabs instance
     instance = init_elevenlabs_instance()
+
+    # Print voice info
+    print_voice_info(instance)
 
     try:
         while True:
