@@ -1,1 +1,2 @@
 elevenlabs==2.42.0
+python-dotenv
